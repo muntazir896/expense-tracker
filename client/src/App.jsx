@@ -27,6 +27,7 @@ function App() {
   const [editingId, setEditingId] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [loadError, setLoadError] = useState("");
+  const API_URL = "https://expense-tracker-63uz3ei51-muntazir8.vercel.app";
 
     // Authentication states
   const [token, setToken] = useState(
@@ -60,7 +61,7 @@ useEffect(() => {
       setLoadError("");
 
       const response = await fetch(
-        "http://localhost:5000/api/transactions",
+        `${API_URL}/api/transactions`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -121,7 +122,7 @@ useEffect(() => {
         authMode === "login" ? "login" : "register";
 
       const response = await fetch(
-        `http://localhost:5000/api/auth/${endpoint}`,
+        `${API_URL}/api/auth/${endpoint}`,
         {
           method: "POST",
           headers: {
@@ -199,9 +200,9 @@ useEffect(() => {
     try {
       const isEditing = editingId !== null;
 
-      const url = isEditing
-        ? `http://localhost:5000/api/transactions/${editingId}`
-        : "http://localhost:5000/api/transactions";
+  const url = isEditing
+    ? `${API_URL}/api/transactions/${editingId}`
+    : `${API_URL}/api/transactions`;
 
       const response = await fetch(url, {
         method: isEditing ? "PUT" : "POST",
@@ -266,7 +267,7 @@ useEffect(() => {
   async function handleDelete(id) {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/transactions/${id}`,
+        `${API_URL}/api/transactions/${id}`,
         {
           method: "DELETE",
           headers: {
