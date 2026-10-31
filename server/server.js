@@ -319,16 +319,10 @@ app.delete("/api/transactions/:id", authMiddleware, async (req, res) => {
 
 
 
-// Connect MongoDB and start server
-mongoose
-  .connect(process.env.MONGODB_URI)
-  .then(() => {
-    console.log("MongoDB connected successfully!");
+// Connect MongoDB
+await mongoose.connect(process.env.MONGODB_URI);
 
-    app.listen(PORT, () => {
-      console.log(`Server is running on port ${PORT}`);
-    });
-  })
-  .catch((error) => {
-    console.error("MongoDB connection failed:", error.message);
-  });
+console.log("MongoDB connected successfully!");
+
+// Export Express app for Vercel
+export default app;
