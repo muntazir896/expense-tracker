@@ -27,7 +27,7 @@ function App() {
   const [editingId, setEditingId] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [loadError, setLoadError] = useState("");
-  const API_URL = "https://expense-tracker-63uz3ei51-muntazir8.vercel.app";
+  const API_URL = "https://expense-tracker-eight-green-34.vercel.app";
 
     // Authentication states
   const [token, setToken] = useState(
